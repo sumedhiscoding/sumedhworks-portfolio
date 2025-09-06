@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaSearch } from "react-icons/fa";
 import { Magnetic } from "../motion-primitives/magnetic";
 
 export const IconTypes = {
   ARROW_RIGHT: "ARROW_RIGHT",
+  SEARCH: "SEARCH",
 };
 
 const springOptions = { bounce: 0.1 };
@@ -27,7 +29,7 @@ const BaseButton = ({ children, icon, ...rest }) => (
 );
 
 const Button = (props) => {
-  const { href, children, icon } = props;
+  const { href, children, icon, onClick } = props;
 
   if (href) {
     return (
@@ -51,7 +53,9 @@ const Button = (props) => {
       actionArea="global"
       range={200}
     >
-      <BaseButton icon={icon}>{children}</BaseButton>
+      <BaseButton onClick={onClick} icon={icon}>
+        {children}
+      </BaseButton>
     </Magnetic>
   );
 };
@@ -59,6 +63,9 @@ const Button = (props) => {
 Button.Icon = ({ iconType }) => {
   if (iconType === IconTypes.ARROW_RIGHT) {
     return <FaArrowRight className="ml-2 text-inherit" />;
+  }
+  if (iconType === IconTypes.SEARCH) {
+    return <FaSearch className="ml-2 text-inherit" />;
   }
   return null;
 };

@@ -1,21 +1,5 @@
 import { Lato, Open_Sans } from "next/font/google";
-
-import {
-  Dock,
-  DockItem,
-  DockIcon,
-  DockLabel,
-} from "../components/motion-primitives/dock";
-import Link from "next/link";
-import {
-  Activity,
-  Component,
-  HomeIcon,
-  Mail,
-  Package,
-  ScrollText,
-  SunMoon,
-} from "lucide-react";
+import AppleStyleDock from "@/app/components/AppleStyleDock";
 import { Merriweather, Lora, Playfair_Display } from "next/font/google";
 
 const merriweather = Merriweather({
@@ -27,58 +11,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
-const data = [
-  {
-    title: "Home",
-    icon: (
-      <HomeIcon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/",
-  },
-  {
-    title: "Projects",
-    icon: (
-      <Package className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Blogs",
-    icon: (
-      <Component className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/blogs",
-  },
-  {
-    title: "Activity",
-    icon: (
-      <Activity className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Resume",
-    icon: (
-      <ScrollText className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Contact",
-    icon: (
-      <Mail className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Theme",
-    icon: (
-      <SunMoon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-];
 
 const lato = Lato({
   subsets: ["latin"],
@@ -97,7 +29,12 @@ export const metadata = {
 };
 
 export function Layout({ children }) {
-  return <div>{children}</div>;
+  return (
+    <div className="overflow-hidden">
+      {children}
+      <AppleStyleDock className="fixed bottom-2 py-2  left-0 w-full z-50 " />
+    </div>
+  );
 }
 
 export default Layout;

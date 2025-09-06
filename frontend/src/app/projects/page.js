@@ -1,5 +1,5 @@
 import React from "react";
-import { AppleStyleDock } from "../page";
+import AppleStyleDock from "@/app/components/AppleStyleDock";
 import Header from "../components/Header";
 import { SpotlightCustomColor } from "../components/SpotlightCustomColor/SpotlightCustomColor";
 import ProjectCard from "../components/card/ProjectCard";
@@ -41,14 +41,8 @@ const Page = async () => {
                   Link={_.Link}
                   href={`/projects/${_.slug}`}
                   btnIcon={IconTypes.ARROW_RIGHT}
-                  
                 />
               ))}
-            </div>
-
-            {/* Dock at bottom */}
-            <div className="fixed bottom-0 left-0 right-0">
-              <AppleStyleDock />
             </div>
           </div>
         </div>

@@ -6,98 +6,15 @@ import { fetchBlogs } from "./helper/fetchhelper";
 import styles from "./globals.css";
 import { Spotlight } from "@/app/components/motion-primitives/spotlight";
 import { SpotlightCustomColor } from "./components/SpotlightCustomColor/SpotlightCustomColor";
-import {
-  Activity,
-  Component,
-  HomeIcon,
-  Mail,
-  Package,
-  ScrollText,
-  SunMoon,
-} from "lucide-react";
-import InfiniteSliderVertical from "../app/components/CustomInfiniteSlider/CustomInfiniteSlider";
-import {
-  Dock,
-  DockIcon,
-  DockItem,
-  DockLabel,
-} from "@/app/components/motion-primitives/dock";
-import { TextRoll } from "./components/motion-primitives/textRoll";
 import { TextEffect } from "./components/motion-primitives/text-effect";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const data = [
-  {
-    title: "Home",
-    icon: (
-      <HomeIcon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/",
-  },
-  {
-    title: "Projects",
-    icon: (
-      <Package className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/projects",
-  },
-  {
-    title: "Blogs",
-    icon: (
-      <Component className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/blogs",
-  },
-  {
-    title: "Activity",
-    icon: (
-      <Activity className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "/activity",
-  },
-  {
-    title: "Resume",
-    icon: (
-      <ScrollText className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Contact",
-    icon: (
-      <Mail className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-  {
-    title: "Theme",
-    icon: (
-      <SunMoon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-    ),
-    href: "#",
-  },
-];
+import AppleStyleDock from "@/app/components/AppleStyleDock";
+import InfiniteSliderVertical from "./components/CustomInfiniteSlider/CustomInfiniteSlider";
+import { TextRoll } from "./components/motion-primitives/textRoll";
 
-export function AppleStyleDock() {
-  return (
-    <div className="absolute bottom-2 left-1/2 max-w-full -translate-x-1/2">
-      <Dock className="items-end pb-3">
-        {data.map((item, idx) => (
-          <Link href={item.href} key={idx}>
-            <DockItem
-              key={idx}
-              className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 hover:cursor-pointer "
-            >
-              <DockLabel>{item.title}</DockLabel>
-              <DockIcon>{item.icon}</DockIcon>
-            </DockItem>
-          </Link>
-        ))}
-      </Dock>
-    </div>
-  );
-}
+// ...existing code...
 
 const Home = () => {
   const [renderKey, setRenderKey] = useState(0);
