@@ -16,12 +16,9 @@ export default function MarkdownRenderer({ content }) {
         code({ children, className, ...rest }) {
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <SyntaxHighlighter
-              {...rest}
-              children={String(children).replace(/\n$/, "")}
-              language={match[1]}
-              style={oneDark}
-            />
+            <SyntaxHighlighter {...rest} language={match[1]} style={oneDark}>
+              {String(children).replace(/\n$/, "")}
+            </SyntaxHighlighter>
           ) : (
             <code
               {...rest}

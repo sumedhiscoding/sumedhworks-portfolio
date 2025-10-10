@@ -67,13 +67,15 @@ const BlogDetails = async ({ params }) => {
 
         {/* Cover Image */}
         <div className="mb-12">
-          <Image
-            className="rounded-xl shadow-lg object-cover w-full max-h-[500px]"
-            src={`${config.STRAPI_BACKEND_BASEURL}${blog.cover.formats.large.url}`}
-            alt="thumbnail"
-            width={blog.cover.formats.large.width}
-            height={blog.cover.formats.large.height}
-          />
+          {blog.cover && blog.cover.formats && blog.cover.formats.large && (
+            <Image
+              className="rounded-xl shadow-lg object-cover w-full max-h-[500px]"
+              src={`${config.STRAPI_BACKEND_BASEURL}${blog.cover.formats.large.url}`}
+              alt="thumbnail"
+              width={blog.cover.formats.large.width}
+              height={blog.cover.formats.large.height}
+            />
+          )}
         </div>
 
         {/* Blog Content */}

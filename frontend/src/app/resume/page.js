@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import ChatApplication from "../components/ChatApplication/ChatApplication";
 
 const ExpandCard = ({ title, desc }) => {
@@ -17,64 +17,67 @@ export default function SineWaveCanvas() {
   const pausedRef = useRef(false); // flag for pause/resume
 
   // milestones.js
-  const milestones = [
-    {
-      y: 800,
-      label: "College",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>B.E. in Computer Science</li>
-          <li>Built projects in MERN stack & cloud</li>
-          <li>Strong foundation in DSA & CS fundamentals</li>
-        </ul>
-      ),
-    },
-    {
-      y: 650,
-      label: "Congruent Solutions Intern",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>Worked on Payroll APIs with .NET 8 microservices</li>
-          <li>Explored database performance tuning</li>
-          <li>Hands-on with RabbitMQ & messaging patterns</li>
-        </ul>
-      ),
-    },
-    {
-      y: 450,
-      label: "Nirvin IT Intern",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>Worked on cloud infrastructure setup</li>
-          <li>Explored Docker, Kubernetes basics</li>
-          <li>Introduced to CI/CD pipelines</li>
-        </ul>
-      ),
-    },
-    {
-      y: 250,
-      label: "Congruent Solutions Software Engineer",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>Full-time engineer in Payroll domain</li>
-          <li>Worked on 30+ microservices & batch jobs</li>
-          <li>DevOps: AKS, Helm, Bicep IaC, Key Vault, CI/CD</li>
-          <li>Building AI chatbot with Semantic Kernel</li>
-        </ul>
-      ),
-    },
-    {
-      y: 100,
-      label: "1 Year Experience",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>End-to-end ownership of microservices</li>
-          <li>Advanced skills in cloud infra & security</li>
-          <li>Specialized in database fine-tuning</li>
-        </ul>
-      ),
-    },
-  ];
+  const milestones = useMemo(
+    () => [
+      {
+        y: 800,
+        label: "College",
+        desc: (
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>B.E. in Computer Science</li>
+            <li>Built projects in MERN stack & cloud</li>
+            <li>Strong foundation in DSA & CS fundamentals</li>
+          </ul>
+        ),
+      },
+      {
+        y: 650,
+        label: "Congruent Solutions Intern",
+        desc: (
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>Worked on Payroll APIs with .NET 8 microservices</li>
+            <li>Explored database performance tuning</li>
+            <li>Hands-on with RabbitMQ & messaging patterns</li>
+          </ul>
+        ),
+      },
+      {
+        y: 450,
+        label: "Nirvin IT Intern",
+        desc: (
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>Worked on cloud infrastructure setup</li>
+            <li>Explored Docker, Kubernetes basics</li>
+            <li>Introduced to CI/CD pipelines</li>
+          </ul>
+        ),
+      },
+      {
+        y: 250,
+        label: "Congruent Solutions Software Engineer",
+        desc: (
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>Full-time engineer in Payroll domain</li>
+            <li>Worked on 30+ microservices & batch jobs</li>
+            <li>DevOps: AKS, Helm, Bicep IaC, Key Vault, CI/CD</li>
+            <li>Building AI chatbot with Semantic Kernel</li>
+          </ul>
+        ),
+      },
+      {
+        y: 100,
+        label: "1 Year Experience",
+        desc: (
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>End-to-end ownership of microservices</li>
+            <li>Advanced skills in cloud infra & security</li>
+            <li>Specialized in database fine-tuning</li>
+          </ul>
+        ),
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -121,7 +124,10 @@ export default function SineWaveCanvas() {
     };
 
     animate();
-  }, []);
+
+    // Cleanup function to cancel animation frame on unmount
+    return () => cancelAnimationFrame(animate);
+  }, [milestones]);
 
   return (
     <div
@@ -206,8 +212,12 @@ export default function SineWaveCanvas() {
       </div>
 
       {/* Right: Resume */}
-      <div className="flex-1 z-0 h-full w-full bg-white">
-        <ChatApplication />
+      <div className="flex-1 z-0 h-full w-full bg-amber-600">
+        <iframe
+          src="/SumedhResume.pdf"
+          className="w-full h-full rounded-lg shadow-lg"
+          style={{ border: "none" }}
+        />
       </div>
     </div>
   );
