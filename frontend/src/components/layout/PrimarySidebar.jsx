@@ -23,7 +23,8 @@ export default function PrimarySidebar({ className }) {
           className="mb-8 block px-1 text-[2rem] font-semibold tracking-tight text-zinc-900 transition-colors hover:text-zinc-600"
           style={{ fontFamily: "var(--font-playfair), ui-serif, Georgia, serif" }}
         >
-          {SITE_NAME}
+          {/* {SITE_NAME} */}
+          OCCAM'S DISCIPLE
         </Link>
         <PrimaryNavLinks variant="sidebar" />
       </div>
