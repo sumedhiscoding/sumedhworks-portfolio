@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import PhilosopherShell from "@/components/layout/PhilosopherShell";
 import SiteTopBar from "@/components/layout/SiteTopBar";
 import { SITE_NAME } from "@/components/layout/siteConstants";
+import { cn } from "@/lib/utils";
 
-const CHAPTERS = [
+const TIMELINE_CHAPTERS = [
   {
     id: "present-congruent",
     tag: "PRESENT",
@@ -74,6 +75,91 @@ const CHAPTERS = [
   },
 ];
 
+const CAPABILITY_CHAPTERS = [
+  {
+    id: "cap-systems",
+    tag: "SYSTEMS",
+    title: "Systems & Architecture",
+    meta: "Boundaries and trade-offs",
+    items: [
+      "Design of distributed systems using microservices",
+      "Event-driven communication with RabbitMQ",
+      "Understanding of state, failure points, and system boundaries",
+      "Trade-offs between scalability, cost, and complexity",
+    ],
+  },
+  {
+    id: "cap-backend",
+    tag: "BACKEND",
+    title: "Backend Engineering",
+    meta: "APIs and services",
+    items: [
+      "Building APIs with ASP.NET Core",
+      "Service orchestration and batch processing workflows",
+      "Secure and structured data access patterns",
+      "Experience with high-volume transactional systems",
+    ],
+  },
+  {
+    id: "cap-cloud",
+    tag: "CLOUD",
+    title: "Cloud & Infrastructure",
+    meta: "Azure and delivery",
+    items: [
+      "Deploying and managing systems on Microsoft Azure",
+      "Containerization with Docker",
+      "Orchestration using Kubernetes (AKS)",
+      "Infrastructure as Code using Bicep",
+      "CI/CD pipelines with Azure DevOps",
+    ],
+  },
+  {
+    id: "cap-frontend",
+    tag: "FRONTEND",
+    title: "Frontend & Interaction",
+    meta: "Interfaces and real-time",
+    items: [
+      "Building interfaces with React",
+      "State-driven UI using XState",
+      "Real-time updates via WebSockets (SignalR)",
+    ],
+  },
+  {
+    id: "cap-data",
+    tag: "DATA",
+    title: "Data & Databases",
+    meta: "Relational systems",
+    items: [
+      "Working with relational databases (SQL Server, PostgreSQL)",
+      "Query design and performance awareness",
+      "Exploring database internals, indexing, and optimization",
+    ],
+  },
+  {
+    id: "cap-ai",
+    tag: "AI",
+    title: "AI & Emerging Systems",
+    meta: "Reasoning with guardrails",
+    items: [
+      "Building AI systems that interact with databases",
+      "Using Semantic Kernel for structured reasoning",
+      "Focus on security, correctness, and controlled generation",
+    ],
+  },
+  {
+    id: "cap-mindset",
+    tag: "PRAXIS",
+    title: "Engineering Mindset",
+    meta: "How decisions get made",
+    items: [
+      "Think in systems, not just functions",
+      "Prioritize clarity over cleverness",
+      "Design for failure, not just success",
+      "Bias toward simplicity that survives scale",
+    ],
+  },
+];
+
 function Chapter({ tag, title, meta, items }) {
   return (
     <article
@@ -101,6 +187,8 @@ function Chapter({ tag, title, meta, items }) {
 }
 
 export default function ResumePage() {
+  const [recordTab, setRecordTab] = useState("journey");
+
   useEffect(() => {
     document.title = `Record of Becoming · ${SITE_NAME}`;
   }, []);
@@ -192,9 +280,78 @@ export default function ResumePage() {
           style={{ scrollMarginTop: "5rem" }}
         >
           <div className="mx-auto max-w-3xl">
-            {CHAPTERS.map(({ id, ...ch }) => (
-              <Chapter key={id} {...ch} />
-            ))}
+            <div className="mb-10 flex flex-col gap-4 border-b border-zinc-200 pb-0 sm:flex-row sm:items-end sm:justify-between">
+              <p className="text-[10px] font-semibold tracking-[0.28em] text-zinc-400 uppercase">
+                Chronicle · record
+              </p>
+              <div
+                className="flex min-w-0 gap-0"
+                role="tablist"
+                aria-label="Record sections"
+              >
+                <button
+                  id="tab-journey"
+                  type="button"
+                  role="tab"
+                  aria-selected={recordTab === "journey"}
+                  aria-controls="panel-journey"
+                  className={cn(
+                    "-mb-px shrink-0 border-b-2 px-4 py-3 text-left text-[10px] font-semibold tracking-[0.2em] uppercase transition-colors sm:px-5",
+                    recordTab === "journey"
+                      ? "border-zinc-950 text-zinc-950"
+                      : "border-transparent text-zinc-400 hover:text-zinc-700"
+                  )}
+                  onClick={() => setRecordTab("journey")}
+                >
+                  Journey
+                </button>
+                <button
+                  id="tab-capabilities"
+                  type="button"
+                  role="tab"
+                  aria-selected={recordTab === "capabilities"}
+                  aria-controls="panel-capabilities"
+                  className={cn(
+                    "-mb-px shrink-0 border-b-2 px-4 py-3 text-left text-[10px] font-semibold tracking-[0.2em] uppercase transition-colors sm:px-5",
+                    recordTab === "capabilities"
+                      ? "border-zinc-950 text-zinc-950"
+                      : "border-transparent text-zinc-400 hover:text-zinc-700"
+                  )}
+                  onClick={() => setRecordTab("capabilities")}
+                >
+                  Capabilities
+                </button>
+              </div>
+            </div>
+
+            {recordTab === "journey" ? (
+              <div
+                id="panel-journey"
+                role="tabpanel"
+                aria-labelledby="tab-journey"
+              >
+                <p className="mb-10 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
+                  Markers and milestones along my career path—how each role, challenge, and learning shaped me as an engineer.
+                </p>
+                {TIMELINE_CHAPTERS.map(({ id, ...ch }) => (
+                  <Chapter key={id} {...ch} />
+                ))}
+              </div>
+            ) : (
+              <div
+                id="panel-capabilities"
+                role="tabpanel"
+                aria-labelledby="tab-capabilities"
+              >
+                <p className="mb-10 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
+                  What I bring to production — and what I continue to sharpen
+                  alongside the journey.
+                </p>
+                {CAPABILITY_CHAPTERS.map(({ id, ...ch }) => (
+                  <Chapter key={id} {...ch} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
