@@ -20,7 +20,8 @@ export default function PrimarySidebar({ className }) {
       <div>
         <Link
           to="/"
-          className="mb-8 block px-1 text-[13px] font-semibold tracking-tight text-zinc-900 transition-colors hover:text-zinc-600"
+          className="mb-8 block px-1 text-[2rem] font-semibold tracking-tight text-zinc-900 transition-colors hover:text-zinc-600"
+          style={{ fontFamily: "var(--font-playfair), ui-serif, Georgia, serif" }}
         >
           {SITE_NAME}
         </Link>
