@@ -1,17 +1,22 @@
+const envOrDev = (env, key, devValue) => {
+  const v = env(key);
+  return v != null && String(v).trim() !== '' ? v : devValue;
+};
+
 module.exports = ({ env }) => ({
   auth: {
-    secret: env('ADMIN_JWT_SECRET'),
+    secret: envOrDev(env, 'ADMIN_JWT_SECRET', 'dev-only-replace-admin-jwt-secret'),
   },
   apiToken: {
-    salt: env('API_TOKEN_SALT'),
+    salt: envOrDev(env, 'API_TOKEN_SALT', 'dev-only-replace-api-token-salt'),
   },
   transfer: {
     token: {
-      salt: env('TRANSFER_TOKEN_SALT'),
+      salt: envOrDev(env, 'TRANSFER_TOKEN_SALT', 'dev-only-replace-transfer-salt'),
     },
   },
   secrets: {
-    encryptionKey: env('ENCRYPTION_KEY'),
+    encryptionKey: envOrDev(env, 'ENCRYPTION_KEY', '12345678901234567890123456789012'),
   },
   flags: {
     nps: env.bool('FLAG_NPS', true),

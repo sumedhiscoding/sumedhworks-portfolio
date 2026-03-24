@@ -2,6 +2,41 @@
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
 
+## 📋 Prerequisites
+
+- Node.js 18-24
+- PostgreSQL database (default: `postgresql://postgres:postgres@localhost:5432/portfolio`)
+- npm or yarn
+
+## 🗄️ Database Setup
+
+This project uses **PostgreSQL** by default. Make sure PostgreSQL is running and the database `portfolio` exists.
+
+### Create the database:
+```sql
+CREATE DATABASE portfolio;
+```
+
+### Environment Variables
+
+Create a `.env` file in the backend directory with the following variables:
+
+```env
+# Database Configuration
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/portfolio
+
+# Strapi Configuration
+HOST=0.0.0.0
+PORT=1337
+
+# App Keys (generate with: openssl rand -base64 32)
+APP_KEYS=your-app-keys-here
+ADMIN_JWT_SECRET=your-admin-jwt-secret-here
+API_TOKEN_SALT=your-api-token-salt-here
+TRANSFER_TOKEN_SALT=your-transfer-token-salt-here
+ENCRYPTION_KEY=your-encryption-key-here
+```
+
 ### `develop`
 
 Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
