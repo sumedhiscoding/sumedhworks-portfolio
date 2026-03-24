@@ -40,7 +40,7 @@ function FeedPost({ post }) {
       </div>
 
       <Link to={post.href} className="group block">
-        <div className="relative mb-6 aspect-[21/9] w-full overflow-hidden bg-zinc-200">
+        <div className="relative mb-6 aspect-video w-full overflow-hidden bg-zinc-200 sm:aspect-[21/9]">
           <img
             src={post.coverUrl}
             alt={post.title}

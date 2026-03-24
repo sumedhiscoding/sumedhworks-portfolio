@@ -46,9 +46,20 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
         code({ children, className, ...rest }) {
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <SyntaxHighlighter {...rest} language={match[1]} style={oneDark}>
-              {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
+            <div className="my-6 max-w-full overflow-x-auto rounded-md">
+              <SyntaxHighlighter
+                {...rest}
+                customStyle={{
+                  margin: 0,
+                  maxWidth: "100%",
+                  fontSize: "0.8125rem",
+                }}
+                language={match[1]}
+                style={oneDark}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
+            </div>
           ) : (
             <code
               {...rest}
@@ -62,7 +73,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
         blockquote({ children }) {
           return (
             <blockquote
-              className="my-6 border-l-4 border-gray-300 pl-4 text-lg italic leading-relaxed text-gray-800"
+              className="my-6 border-l-4 border-gray-300 pl-4 text-base italic leading-relaxed text-gray-800 sm:text-lg"
               style={{ fontFamily: "var(--font-lato)" }}
             >
               <span style={{ fontFamily: "var(--font-playfair)" }}>
@@ -75,7 +86,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
         h1: ({ children }) => (
           <h1
             id={headingId(1, children)}
-            className="scroll-mt-24 mt-8 mb-4 text-4xl leading-snug font-bold text-gray-900"
+            className="scroll-mt-24 mt-8 mb-4 text-2xl leading-snug font-bold text-gray-900 sm:text-3xl md:text-4xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {children}
@@ -84,7 +95,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
         h2: ({ children }) => (
           <h2
             id={headingId(2, children)}
-            className="scroll-mt-24 mt-6 mb-3 text-3xl font-semibold text-gray-800"
+            className="scroll-mt-24 mt-6 mb-3 text-xl font-semibold text-gray-800 sm:text-2xl md:text-3xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {children}
@@ -93,7 +104,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
         h3: ({ children }) => (
           <h3
             id={headingId(3, children)}
-            className="scroll-mt-24 mt-5 mb-2 text-2xl font-semibold text-gray-800"
+            className="scroll-mt-24 mt-5 mb-2 text-lg font-semibold text-gray-800 sm:text-xl md:text-2xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {children}
@@ -102,7 +113,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
 
         p: ({ children }) => (
           <p
-            className="mb-5 text-[1.5rem] leading-relaxed text-gray-700"
+            className="mb-5 text-base leading-relaxed text-gray-700 sm:text-[1.5rem]"
             style={{ fontFamily: "var(--font-merriweather)" }}
           >
             {children}
@@ -126,7 +137,7 @@ export default function MarkdownRenderer({ content, tocEntries = [] }) {
           </ol>
         ),
         li: ({ children }) => (
-          <li className="ml-2 text-[1.5rem]">{children}</li>
+          <li className="ml-2 text-base sm:text-[1.5rem]">{children}</li>
         ),
 
         table: ({ children }) => (

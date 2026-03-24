@@ -110,7 +110,7 @@ export default function ResumePage() {
       <main className="min-h-0 flex-1 overflow-y-auto bg-white">
         <section id="becoming" className="border-b border-zinc-200">
           <div className="flex min-h-0 flex-col lg:min-h-[min(72vh,780px)] lg:flex-row">
-            <div className="relative flex flex-1 flex-col justify-center px-6 py-14 sm:px-10 sm:py-20 lg:min-w-0 lg:px-12 lg:py-24 xl:pl-16 xl:pr-10">
+            <div className="relative flex min-w-0 flex-1 flex-col justify-center px-6 py-14 sm:px-10 sm:py-20 lg:min-w-0 lg:px-12 lg:py-24 xl:pl-16 xl:pr-10">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_0%_35%,rgba(228,228,231,0.4),transparent_58%)]"
                 aria-hidden
@@ -148,12 +148,12 @@ export default function ResumePage() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[min(36vh,340px)] flex-1 flex-col border-t border-zinc-800 bg-[#1a1612] lg:max-w-[min(46vw,560px)] lg:min-h-0 lg:flex-none lg:self-stretch lg:border-t-0 lg:border-l lg:border-zinc-800">
+            <div className="relative flex min-h-0 shrink-0 flex-col border-t border-zinc-800 bg-[#1a1612] max-lg:min-h-0 lg:max-w-[min(46vw,560px)] lg:min-h-0 lg:flex-none lg:self-stretch lg:border-t-0 lg:border-l lg:border-zinc-800">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_45%,rgba(255,255,255,0.07),transparent_62%)]"
                 aria-hidden
               />
-              <div className="relative flex h-full min-h-0 w-full flex-col px-4 pt-10 pb-10 sm:px-6 lg:px-7">
+              <div className="relative flex w-full flex-col px-4 pt-6 pb-6 sm:px-6 lg:h-full lg:min-h-0 lg:px-7 lg:pt-10 lg:pb-10">
                 <div className="mb-6 w-full shrink-0 border border-stone-500/50 bg-stone-950/40 px-5 py-5 sm:px-6 sm:py-6">
                   <p className="mb-3 text-[11px] font-semibold tracking-[0.18em] text-stone-400 sm:text-xs uppercase">
                     Margin note
@@ -167,14 +167,14 @@ export default function ResumePage() {
                     &mdash; George Herbert Mead
                   </p>
                 </div>
-                <div className="mt-auto flex w-full flex-col items-stretch leading-none">
+                <div className="mt-0 flex w-full flex-col items-stretch leading-none lg:mt-auto">
                   <img
                     src="/images/record-school-of-athens.png"
                     alt=""
                     width={1600}
                     height={900}
                     decoding="async"
-                    className="block h-auto w-full max-h-[min(48vh,520px)] object-contain object-bottom shadow-2xl shadow-black/40 lg:max-h-[min(70vh,680px)]"
+                    className="block h-auto w-full max-h-[min(40vh,440px)] object-contain object-bottom shadow-2xl shadow-black/40 sm:max-h-[min(46vh,500px)] lg:max-h-[min(70vh,680px)]"
                   />
                   <p className="mt-2 pb-0 text-center text-[10px] font-medium tracking-[0.15em] text-stone-500 sm:text-[11px] uppercase">
                     <span className="sr-only">Artwork: </span>

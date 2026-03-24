@@ -18,7 +18,7 @@ export default function HomePage() {
           className="relative border-b border-zinc-200"
         >
           <div className="flex min-h-0 flex-col lg:min-h-[min(88vh,860px)] lg:flex-row">
-            <div className="relative flex flex-1 flex-col justify-center px-6 py-14 sm:px-10 sm:py-20 lg:min-w-0 lg:px-12 lg:py-24 xl:pl-16 xl:pr-12">
+            <div className="relative flex min-w-0 flex-1 flex-col justify-center px-6 py-14 sm:px-10 sm:py-20 lg:min-w-0 lg:px-12 lg:py-24 xl:pl-16 xl:pr-12">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_0%_40%,rgba(228,228,231,0.45),transparent_55%)]"
                 aria-hidden
@@ -64,7 +64,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[min(42vh,420px)] flex-1 items-end justify-center border-t border-zinc-800 bg-zinc-950 lg:min-h-0 lg:max-w-[min(46vw,540px)] lg:flex-none lg:border-t-0 lg:border-l lg:border-zinc-800">
+            <div className="relative flex min-h-[min(34vh,300px)] flex-1 items-end justify-center border-t border-zinc-800 bg-zinc-950 sm:min-h-[min(38vh,360px)] lg:min-h-0 lg:max-w-[min(46vw,540px)] lg:flex-none lg:border-t-0 lg:border-l lg:border-zinc-800">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_70%_100%,rgba(255,255,255,0.06),transparent_65%)]"
                 aria-hidden
@@ -76,7 +76,7 @@ export default function HomePage() {
                 height={1200}
                 decoding="async"
                 fetchPriority="high"
-                className="relative z-[1] h-auto w-full max-h-[min(50vh,480px)] object-contain object-bottom px-4 pb-2 sm:max-h-[min(58vh,560px)] lg:max-h-[min(82vh,760px)] lg:px-2 lg:pb-0"
+                className="relative z-[1] h-auto w-full max-h-[min(42vh,400px)] object-contain object-bottom px-4 pb-2 sm:max-h-[min(52vh,520px)] lg:max-h-[min(82vh,760px)] lg:px-2 lg:pb-0"
               />
             </div>
           </div>
